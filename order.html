@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформлення замовлення</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="products.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/f93cbd3298.js"></script>
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="sidebar">
+        <span id="open-btn" class="toggleMenu"><i class="fa fa-bars"></i></span>
+        <span id="close-btn">×</span>
+        <ol>
+            <li><a href="index.html">Щоденники</a></li>
+            <li><a href="index1.html">Футболки</a></li>
+            <li><a href="index_empty.html">Холсти на підрамнику</a></li>
+            <li><a href="index2.html">Чашки</a></li>
+            <li><a href="index_empty.html">Подушки</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+        </ol>
+    </div>
+    <header>
+        <!-- <button id="cart-button">🛒 Кошик</button> -->
+        <div id="nav">
+            <ul>
+                <li><a href="index.html">Щоденники</a></li>
+                <li><a href="index1.html">Футболки</a></li>
+            <li><a href="index_empty.html">Холсти на підрамнику</a></li>
+            <li><a href="index2.html">Чашки</a></li>
+            <li><a href="index_empty.html">Подушки</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <form id="order-form">
+            <h2>Персональні дані</h2>
+            <label for="name">Ім'я: <span style="color: red;">*</span></label>
+            <input type="text" id="name" name="name" required>
+           
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          
+            <label for="telegram">Юзер Telegram:<!--  <span style="color: red;">*</span>--></label> 
+            <input type="text" id="telegram" name="telegram">
+
+         
+            <h2 id="cart-header">
+                Ваш кошик <span class="arrow" style="font-size: 18px; cursor: pointer;">▼</span>
+            </h2>
+            <ul id="cart-items">
+                <!-- Товари додаються через JavaScript -->
+            </ul>
+
+            <h2>Доставка</h2>
+            <div id="delivery-form">
+                <label for="delivery-type">Тип доставки:<span style="color: red;">*</span></label>
+                <select id="delivery-type">
+                    <option value="">Оберіть тип доставки</option>
+                    <option value="courier">Кур'єрська доставка</option>
+                    <option value="branch">Відділення</option>
+                    <option value="locker">Поштомат</option>
+                </select>
+
+                <div id="courier-fields" class="hidden">
+                    <label for="courier-city">Місто: <span style="color: red;">*</span></label>
+                    <input type="text" id="courier-city" required>
+                    
+                    <label for="courier-street">Вулиця: <span style="color: red;">*</span></label>
+                    <input type="text" id="courier-street" required>
+                    
+                    <label for="courier-apartment">Квартира: <span style="color: red;">*</span></label>
+                    <input type="text" id="courier-apartment" required>
+                </div>
+
+                <div id="branch-fields" class="hidden">
+                    <label for="branch-city">Місто (Нова Пошта): <span style="color: red;">*</span></label>
+                    <input type="text" id="branch-city" list="branch-city-list" placeholder="Введіть місто..." autocomplete="off" required>
+
+                    <label for="branch-select">Відділення: <span style="color: red;">*</span></label>
+                    <select id="branch-select">
+                        <option value="">Оберіть відділення</option>
+                    </select>
+                </div>
+
+                <div id="locker-fields" class="hidden">
+                    <label for="locker-city">Місто (Нова Пошта): <span style="color: red;">*</span></label>
+                    <input type="text" id="locker-city" list="locker-city-list" placeholder="Введіть місто..." autocomplete="off" required>
+
+                    <label for="locker-select">Поштомат: <span style="color: red;">*</span></label>
+                    <select id="locker-select">
+                        <option value="">Оберіть поштомат</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="receiver-info" class="hidden">
+                <label for="receiver-name">ПІБ: <span style="color: red;">*</span></label>
+                <input type="text" id="receiver-name" required>
+
+                <label for="receiver-phone">Номер телефону: <span style="color: red;">*</span></label>
+                <input type="text" id="receiver-phone" required>
+            </div>
+
+            <label for="payment-method">Метод оплати: <span style="color: red;">*</span></label>
+            <select id="payment-method" name="payment-method" required>
+                <option value="card">Картка</option>
+                <option value="cash">Готівка</option>
+                <option value="paypal">PayPal</option>
+            </select>
+            <div class="container">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="consent-checkbox"> Я погоджуюсь на обробку <a href="https://docs.google.com/document/d/1HmhHI5a7YEVCh7JMskH8GAvnAc6zWV-Ruyt-uUvdlUw/edit?usp=sharing"> персональних даних</a>
+                </label>
+            </div>
+            <input type="button" id="submit-btn" value="Підтвердити замовлення" disabled>
+        </form>
+        <div id="custom-modal" class="hidden">
+            <div id="modal-content">
+                <span id="close-modal-btn">&times;</span>
+                <span id="modal-message"></span>
+            </div>
+        </div>
+    </main>
+    
+    <script src="order.js"></script>
+    <script src="delivery.js"></script>
+
+    <script>
+    $(document).ready(() => {
+    const nav = $("#nav ul");
+    const openBtn = $("#open-btn");
+    const closeBtn = $("#close-btn");
+    const sidebar = $("#sidebar");
+
+    // Обробка меню навігації
+    $(".toggleMenu").click((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        $("#nav ul").slideToggle(500);
+    });
+
+    $(window).resize(() => {
+        if ($(window).width() > 992) nav.removeAttr("style");
+    });
+
+    openBtn.click(() => sidebar.addClass("open"));
+    closeBtn.click(() => sidebar.removeClass("open"));
+
+    // Обробка кнопки submit з чекбоксом
+    let submitBtn = document.getElementById('submit-btn');
+    let consentCheckbox = document.getElementById('consent-checkbox');
+
+    function updateButtonState() {
+        submitBtn.disabled = !consentCheckbox.checked;
+        submitBtn.style.backgroundColor = consentCheckbox.checked ? "#00b894" : "gray";
+        submitBtn.style.cursor = consentCheckbox.checked ? "pointer" : "not-allowed";
+    }
+
+    updateButtonState();
+    consentCheckbox.addEventListener('change', updateButtonState);
+});
+
+    </script>
+</body>
+</html>

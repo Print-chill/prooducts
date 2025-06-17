@@ -1,0 +1,214 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+header, footer {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #fff;
+    padding: 20px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+    margin: 0;
+}
+
+header ul li {
+    margin: 0 15px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #dfe6e9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #007bff;
+}
+
+.toggleMenu {
+    align-items: center;
+    display: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#checkout {
+    position: relative;
+    bottom: -15px;
+    right: 0;
+    background-color: #00b894;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    float: right;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#checkout:hover {
+    background-color: #00a884;
+    transform: translateY(-2px);
+}
+
+/* Сайдбар за замовчуванням прихований */
+#sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2c3e50;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+#sidebar.open {
+    width: 250px;
+}
+
+#sidebar ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar ol li {
+    padding: 15px 20px;
+    font-size: 18px;
+}
+
+#sidebar ol li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+#sidebar ol li a:hover {
+    color: #007bff;
+}
+
+#sidebar #close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#sidebar #close-btn:hover {
+    color: #ff6b6b;
+}
+
+#open-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+    display: none;
+    transition: color 0.3s ease;
+}
+
+#open-btn:hover {
+    color: #007bff;
+}
+
+/* Для екранів менше 968px */
+@media (max-width: 968px) {
+    #nav {
+        display: none;
+    }
+    
+    .toggleMenu,
+    #open-btn {
+        display: block;
+    }
+
+    #sidebar {
+        display: block;
+    }
+
+    header ul li a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    header {
+        display: none;
+    }
+
+    .fa {
+        color: #2c3e50;
+    }
+}
+
+/* Для екранів більше 968px */
+@media (min-width: 969px) {
+    #sidebar {
+        display: none;
+    }
+    
+    #nav {
+        display: flex;
+        justify-content: center;
+    }
+    
+    #open-btn {
+        display: none;
+    }
+}
